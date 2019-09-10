@@ -1,0 +1,103 @@
+[33mcommit cb90bcdfb16b9887fb59083cd51b6f689e93d987[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mADDED-PHOTO-FUNCTIONALITY[m[33m)[m
+Author: richardford10 <richardford10@gmail.com>
+Date:   Thu Aug 22 23:21:59 2019 -0400
+
+    First commit
+
+[1mdiff --git a/OOP/gallery/.DS_Store b/OOP/gallery/.DS_Store[m
+[1mnew file mode 100644[m
+[1mindex 0000000..0dafe63[m
+Binary files /dev/null and b/OOP/gallery/.DS_Store differ
+[1mdiff --git a/OOP/gallery/admin/comments.php b/OOP/gallery/admin/comments.php[m
+[1mnew file mode 100644[m
+[1mindex 0000000..25d18a5[m
+[1m--- /dev/null[m
+[1m+++ b/OOP/gallery/admin/comments.php[m
+[36m@@ -0,0 +1,47 @@[m
+[32m+[m[32m<?php include("includes/header.php"); ?>[m
+[32m+[m
+[32m+[m[32m<!-- Navigation -->[m
+[32m+[m[32m<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">[m
+[32m+[m[32m  <!-- Brand and toggle get grouped for better mobile display -->[m
+[32m+[m[32m  <?php include("includes/top_nav.php"); ?>[m
+[32m+[m[32m  <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->[m
+[32m+[m[32m  <?php include("includes/side_nav.php");?>[m
+[32m+[m[32m  <!-- /.navbar-collapse -->[m
+[32m+[m[32m</nav>[m
+[32m+[m
+[32m+[m
+[32m+[m
+[32m+[m[32m<div id="page-wrapper">[m
+[32m+[m
+[32m+[m[32m  <div class="container-fluid">[m
+[32m+[m
+[32m+[m[32m    <!-- Page Heading -->[m
+[32m+[m[32m    <div class="row">[m
+[32m+[m[32m      <div class="col-lg-12">[m
+[32m+[m[32m        <h1 class="page-header">[m
+[32m+[m[32m          Comments[m
+[32m+[m[32m          <small>Subheading</small>[m
+[32m+[m[32m        </h1>[m
+[32m+[m[32m        <ol class="breadcrumb">[m
+[32m+[m[32m          <li>[m
+[32m+[m[32m            <i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>[m
+[32m+[m[32m          </li>[m
+[32m+[m[32m          <li class="active">[m
+[32m+[m[32m            <i class="fa fa-file"></i> Blank Page[m
+[32m+[m[32m          </li>[m
+[32m+[m[32m        </ol>[m
+[32m+[m[32m      </div>[m
+[32m+[m[32m    </div>[m
+[32m+[m[32m    <!-- /.row -->[m
+[32m+[m
+[32m+[m[32m  </div>[m
+[32m+[m[32m  <!-- /.container-fluid -->[m
+[32m+[m
+[32m+[m[32m</div>[m
+[32m+[m
+[32m+[m
+[32m+[m
+[32m+[m
+[32m+[m[32m<!-- /#page-wrapper -->[m
+[32m+[m
+[32m+[m[32m<?php include("includes/footer.php"); ?>[m
+\ No newline at end of file[m
+[1mdiff --git a/OOP/gallery/admin/css/bootstrap-rtl.css b/OOP/gallery/admin/css/bootstrap-rtl.css[m
+[1mnew file mode 100644[m
+[1mindex 0000000..33095b1[m
+[1m--- /dev/null[m
+[1m+++ b/OOP/gallery/admin/css/bootstrap-rtl.css[m
+[36m@@ -0,0 +1,1536 @@[m
+[32m+[m[32m/*******************************************************************************[m
+[32m+[m[32m *              bootstrap-rtl (Version 3.2.0-rc1)[m
+[32m+[m[32m *      Author: Morteza Ansarinia <ansarinia@me.com> (http://github.com/morteza)[m
+[32m+[m[32m *  Created on: June 13,2014[m
+[32m+[m[32m *     Project: bootstrap-rtl[m
+[32m+[m[32m *   Copyright: See the file "LICENSE.md" for the full license governing this code.[m
+[32m+[m[32m *******************************************************************************/[m
+[32m+[m
+[32m+[m[32mhtml {[m
+[32m+[m[32m  direction: rtl;[m
+[32m+[m[32m}[m
+[32m+[m[32mbody {[m
+[32m+[m[32m  direction: rtl;[m
+[32m+[m[32m}[m
+[32m+[m[32m.list-unstyled {[m
+[32m+[m[32m  padding-right: 0;[m
+[32m+[m[32m  padding-left: none;[m
+[32m+[m[32m}[m
+[32m+[m[32m.list-inline {[m
+[32m+[m[32m  padding-right: 0;[m
+[32m+[m[32m  padding-left: none;[m
+[32m+[m[32m  margin-right: -5px;[m
+[32m+[m[32m  margin-left: 0;[m
+[32m+[m[32m}[m
+[32m+[m[32mdd {[m
+[32m+[m[32m  margin-right: 0;[m
+[32m+[m[32m  margin-left: none;[m
+[32m+[m[32m}[m
+[32m+[m[32m@media (min-width: 768px) {[m
+[32m+[m[32m  .dl-horizontal dt {[m
+[32m+[m[32m    float: right;[m
+[32m+[m[32m    clear: right;[m
+[32m+
