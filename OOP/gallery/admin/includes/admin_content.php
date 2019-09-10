@@ -11,52 +11,51 @@
         </h1>
 
         <?php
+
+    /*    
+       $user = new User();
+        
+        $user->username = "User2005";
+        $user->password = "password";
+        $user->first_name = "Name2005";
+        $user->last_name = "lastname2005";
+        
+      $user->create();
+     */
+        
+     //update user  
+      
+  /*     $user = User::find_user_by_id(7);
+        $user->first_name = "jojjjj";
+        $user->last_name = "Flllllkkkkk";
+        
+        $user->update();
+*/
+        
+ // $user = USER::find_by_id(8);
+   //    $user->delete();
+      
+       /* $user = User::find_user_by_id(7);
+        $user->password= "1234";
+         $user->update();
+*/
         
         
-    /*$result_set = User::find_all_users();
+   /*   $user = new User();
+        $user->username = "user_6";
+        $user->password = "password";
+        $user->first_name = "Joe";
+        $user->last_name = "Doe";
+         $user->save();
+
+       
+*/
         
-        while($row = mysqli_fetch_array($result_set)){  
-          echo $row['username'] . "<br>";   
-        }
-    
-         $found_user = User::find_user_by_id(2);
-           echo $found_user['username'];   
         
-        $found_user = User::find_user_by_id(2);
-        $user = User::instantiation($found_user);
-    
         
-        echo $user->username;
-        echo "<br>"; */
-     
+       
         
-      /*  $users = User::find_all_users();
-        
-        foreach($users as $user) {
           
-          echo $user->user_id . "<br>";
-          
-          
-        }
-        */
-        
-       $found_user = User::find_user_by_id(2);
-        
-        echo $found_user->username;
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         ?>
 
           <ol class="breadcrumb">

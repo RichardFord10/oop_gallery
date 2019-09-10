@@ -1,6 +1,33 @@
 <?php ob_start(); ?>
 <?php require_once("init.php") ?>
-</p>
+<?php 
+ //if(!$session->is_signed_in()) {redirect("login.php");}
+ 
+
+
+
+
+
+
+
+
+
+
+
+  ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +44,10 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+  
+  <!-- custom CSS -->
+  <link href="css/styles.css" rel="stylesheet"> 
+  
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
 

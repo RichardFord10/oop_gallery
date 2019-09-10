@@ -1,26 +1,46 @@
 <?php
 
 class Session {
-  
-  
+
+    
  private $signed_in = false;
- public  $user_id;
-  
-  
-  
+ public  $id;
+ public  $message;
   
 function __construct() {
 session_start();
 $this->check_the_login();
+$this->check_message();
+  
      
   }
   
+  public function message($msg = ""){
+    
+    if(!empty($msg)){
+      $_SESSION['message'] = $msg;
+    } else {
+    return $this->message;
+    
+  }
+  }
   
+  private function check_message(){
+    
+    if(isset($S_SESSION['message'])){
+     $this->message = $_SESSION['message'];
+      unset($_SESSION['message']);
+    } else {
+      $this->message = "";
+      
+    }
+  }
+    
   
     public function is_signed_in(){
     
     
-    return $this->$signed_in;
+    return $this->signed_in;
     
   }
   
@@ -28,7 +48,7 @@ $this->check_the_login();
    public function login($user){
     
    if($user) {
-     $this->user_id = $_SESSION['user_id'] = $user->id;
+     $this->id = $_SESSION['id'] = $user->id;
      $this->signed_in = true;
    }
     
@@ -37,27 +57,27 @@ $this->check_the_login();
   
    public function logout($user){
     
-   unset($_SESSION['user_id']);
-   unset($this->user_id);
+   unset($_SESSION['id']);
+   unset($this->id);
    $this->signed_in = false;
    }
     
     
-  }
+  
   
   
   
   
     private function check_the_login() {  
   
-    if(isset($_SESSION['user_id'])) {
+    if(isset($_SESSION['id'])) {
     
-    $this->user_id = $_SESSION['user_id'];
+    $this->id = $_SESSION['id'];
     $this->signed_in = true;
     
     }else{
     
-    unset($this->user_id);
+    unset($this->id);
     $this->signed_in = false;
     
   }
