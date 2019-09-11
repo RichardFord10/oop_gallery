@@ -1,11 +1,19 @@
+
 .admin-thumbnail {
   
-  eidth: 200px;
+  width: 200px;
   border-radius: 5px;
+
+}
+
+.user-image {
   
+  width: 62px;
+  height: 62px;
   
   
 }
+
 
 
 
