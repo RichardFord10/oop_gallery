@@ -13,7 +13,7 @@ class User extends Db_object {
   public $upload_directory = "images";
   public $image_placeholder = "http://placehold.it/400x400&text=image";
   
-   public function set_file($file){
+ public function set_file($file){
     
     if(empty($file) || !$file || !is_array($file)) {
       
@@ -49,7 +49,7 @@ class User extends Db_object {
         return false; 
       }
       
-      $target_path = $this->upload_directory . DS . $this->user_image;
+      $target_path = IMAGES_PATH . DS . $this->user_image;
       
       if(file_exists($target_path)) {
         $this->errors[] = "The file {$this->user_image} already exists";
@@ -59,10 +59,12 @@ class User extends Db_object {
       
       if(move_uploaded_file($this->tmp_path, $target_path)) {
        
+        if($this->create()) {
+          
+        
           unset($this->tmp_path);
           return true;
-          
-      
+        }
         
       }else{
         
@@ -70,6 +72,8 @@ class User extends Db_object {
       return false;
       
      }
+      
+      
 
    }
     

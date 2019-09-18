@@ -4,11 +4,14 @@
 <?php
 
 
+if(empty($_GET['id'])){
 
-$comments = Comment:: find_all();
+redirect("photos.php");
 
+}
 
-
+$comments = Comment::find_the_comments($_GET['id']);
+$photo = Photo::find_by_id($_GET['id']);
 
 
 ?>
@@ -27,19 +30,26 @@ $comments = Comment:: find_all();
 <div id="page-wrapper">
 
   <div class="container-fluid">
-
+ <h3 class="bg bg-success">
+        <?php echo $session->message(); ?>
+      </h3>
     <!-- Page Heading -->
     <div class="row">
+     
       <div class="col-lg-12">
         <h1 class="page-header">
          Comments
         </h1>
         <div class="col-md-12">
+          <span>
+            <img  class="comment_page_photo" src="<?php echo $photo->picture_path();?>" alt="">
+          </span> 
+      
           
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>Photo Id</th>
+                <th>Id</th>
                 <th>Author</th>
                 <th>Body</th>
               </tr>
@@ -54,7 +64,7 @@ $comments = Comment:: find_all();
                   <td><?php echo $comment->author;?>
                 
                  <div class="actions_link">
-                            <a href="delete_comment.php?id=<?php echo $comment->id;?>">Delete</a>
+                            <a href="delete_photo_comment.php?id=<?php echo $comment->id;?>">Delete</a>
                             <a href="edit_comment.php?id=<?php   echo $comment->id;?>">Edit</a>
                             <a href="">View</a>
                    </td>
@@ -93,6 +103,7 @@ $comments = Comment:: find_all();
     <!-- /.row -->
 
   </div>
+</div>
   <!-- /.container-fluid -->
 
 </div>

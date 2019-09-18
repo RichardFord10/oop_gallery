@@ -17,7 +17,7 @@
                         <a href="#">About</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                        <a href="front_end_photo.php">Photos</a>
                     </li>
                     <li>
                         <a href="admin/index.php">Admin</a>

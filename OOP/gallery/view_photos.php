@@ -1,3 +1,75 @@
+<?php
+require_once("admin/includes/init.php"); 
+
+if(empty($_GET['id'])) {
+  
+  redirect('index.php');
+  
+
+}
+
+$photo = Photo::find_by_id($_GET['id']);
+
+if(isset($_POST['submit'])) {
+  
+$author = trim($_POST['author']);
+  $body = trim($_POST['body']);
+  
+  
+ $new_comment =  Comment::create_comment($photo->id, $author, $body);
+  
+  if($new_comment && $new_comment->save()) {
+    
+    
+    redirect("view_photos.php?id={$photo->id}");
+    
+    
+   
+  }else{
+    
+    
+    $message= "There were some problems saving";
+    
+    
+    
+    
+  }
+  }else{
+    
+    $author="";
+    $body="";
+    
+    
+    
+  }
+
+  
+  $comments = Comment::find_the_comments($photo->id);
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,7 +143,7 @@
                 <!-- Blog Post -->
 
                 <!-- Title -->
-                <h1>Blog Post Title</h1>
+                <h1><?php echo $photo->title;?></h1>
 
                 <!-- Author -->
                 <p class="lead">
@@ -86,7 +158,7 @@
                 <hr>
 
                 <!-- Preview Image -->
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                <img class="img-responsive" src="<?php echo $photo->picture_path();?>" alt="">
 
                 <hr>
 
@@ -102,60 +174,67 @@
                 <!-- Blog Comments -->
 
                 <!-- Comments Form -->
+              
+              
+              
+              
                 <div class="well">
                     <h4>Leave a Comment:</h4>
-                    <form role="form">
+                    <form role="form" method="post">
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                          <label for="author">Author</label>
+                          <input type="text" name="author" class="form-control">  
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                      <div class="form-group">
+                        <textarea name ="body" class="form-control" rows="3"> </textarea> 
+                        </div>
+                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
 
+         
+              
+              
+              
+              
+              
+              
+              
                 <hr>
 
                 <!-- Posted Comments -->
 
-                <!-- Comment -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </div>
-
-                <!-- Comment -->
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        <!-- Nested Comment -->
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/64x64" alt="">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Nested Start Bootstrap
-                                    <small>August 25, 2014 at 9:30 PM</small>
-                                </h4>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
-                        </div>
-                        <!-- End Nested Comment -->
-                    </div>
-                </div>
-
+           <?php foreach($comments as $comment): ?>          
+          
+          <!---Comment--->
+          <div class="media">
+            <a class="pull-left" href="#">
+                <img class="media-object" src="http://placehold.it/64x64" alt="">
+            </a>            
+            <div class="media-body">
+              <h4 class="media-heading">
+                <?php echo $comment->author;?>
+              <small>August 25th, 2019 at 9:30 PM</small>  
+              </h4>
+             <?php echo $comment->body;?>
             </div>
+              </div>
+    <hr>
+        <?php endforeach ?>
+              
+    
+              
+              
+              
+          </div>    
+              
+              </hr>
+          
+              
+              
+               
+
+           
 
             <!-- Blog Sidebar Widgets Column -->
             <div class="col-md-4">
@@ -204,16 +283,7 @@
                         </div>
                     </div>
                     <!-- /.row -->
-                </div>
-
-                <!-- Side Widget Well -->
-                <div class="well">
-                    <h4>Side Widget Well</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
-                </div>
-
-            </div>
-
+              </div>
         </div>
         <!-- /.row -->
 
@@ -230,6 +300,7 @@
         </footer>
 
     </div>
+  </div>
     <!-- /.container -->
 
     <!-- jQuery -->

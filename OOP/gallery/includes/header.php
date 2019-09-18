@@ -13,6 +13,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
  
 
     <!-- Custom CSS -->
