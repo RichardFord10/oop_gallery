@@ -46,7 +46,10 @@
 
   
   <!-- custom CSS -->
-  <link href="css/styles.css" rel="stylesheet"> 
+  <link href="css/styles.css" rel="stylesheet">
+  
+  <!-- google charts -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">

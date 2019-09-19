@@ -13,6 +13,7 @@ class Photo extends Db_object {
   public $alternate_text;
   public $type;
   public $size;
+
   
   public $tmp_path;
   public $upload_directory = "images";
@@ -82,12 +83,22 @@ class Photo extends Db_object {
   
   
   
-public function delete_photo(){
+
+  
+  public function picture_path () {
+    
+    return $this->upload_directory . DS . $this->filename;
+    
+    
+  }
+  
+  
+  public function delete_photo(){
   
   
   if($this->delete()){
    
-    $target_path = SITE_ROOT . DS . $this->picture_path();
+    $target_path = $this->picture_path();
     
     return unlink($target_path) ? true : false;
   
@@ -98,13 +109,6 @@ public function delete_photo(){
   }
   
 }
-  
-  public function picture_path () {
-    
-    return $this->upload_directory . DS . $this->filename;
-    
-    
-  }
   
 }//end of Class Db_object
 

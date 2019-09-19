@@ -1,6 +1,6 @@
 <?php
 
-
+require_once("paginate.php");
 require_once("root.php");
 require_once("db_object.php");
 require_once("functions.php");
@@ -11,5 +11,6 @@ require_once("session.php");
 //require_once("view_photos.php");
 require_once ("photo.php");
 require_once ("comment.php");
+
 
 ?>
