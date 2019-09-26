@@ -17,6 +17,7 @@ $this->visitor_count();
      
   }
   
+  
  public function visitor_count() {
    
    if(isset($_SESSION['count'])){
@@ -45,7 +46,7 @@ $this->visitor_count();
   
   private function check_message(){
     
-    if(isset($S_SESSION['message'])){
+    if(isset($_SESSION['message'])){
      $this->message = $_SESSION['message'];
       unset($_SESSION['message']);
     } else {
@@ -112,7 +113,8 @@ $this->visitor_count();
   
 }
 
-   $session = new Session();
+$session = new Session();
+$message = $session->message();
 
 
 

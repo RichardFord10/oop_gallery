@@ -1,5 +1,5 @@
 <?php include("includes/header.php"); ?>
-
+<?php include("includes/photo-library-modal.php")?>
 <?php  if(!$session->is_signed_in()) {redirect("login.php");} ?>
 <?php
   
@@ -13,8 +13,7 @@ $user = User:: find_by_id($_GET['id']);
   
   if(isset($_POST['update'])) {
 
-  if($user) {
-$user->user_image = $_POST['user_image'];   
+  if($user) { 
 $user->username = $_POST['username'];
 $user->password =  $_POST['password'];
 $user->first_name =  $_POST['first_name'];
@@ -23,18 +22,20 @@ $user->last_name =  $_POST['last_name'];
  if(empty($_FILES['user_image'])) {
    
    $user->save();
-   
+   redirect("users.php?");
+   $session->message("User Update Success!");
    
  }else{
    
  $user->set_file($_FILES['user_image']);
  $user->upload_photo();
  $user->save();
-   
-  redirect("edit_user.php?id={$user->id}");
-   
+ $session->message("User Update Success!");
+  //redirect("edit_user.php?id={$user->id}");
+  redirect("users.php?"); 
+  
  }   
-  $the_message = "Update Success!";
+
     
   }  
     
@@ -47,6 +48,12 @@ $user->last_name =  $_POST['last_name'];
 
 
 ?>
+
+
+
+
+
+
 
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -70,16 +77,28 @@ $user->last_name =  $_POST['last_name'];
           Add User
           <small></small>
         </h1>
-       
+
+        
+    <div class="col-md-6 user_image_box">
+        
+         <a href="#" data-toggle="modal" data-target="#photo-library">
+        <img class ="img-responsive" src="<?php echo $user->image_path_and_placeholder();?>"> 
+      </a>
+   </div>  
+        
         <form action="" enctype="multipart/form-data" method="post">
           
         
         
         
-        <div class="col-md-8">
+        <div class="col-md-6">
         
            
+          <div class="form-group">
+           <input type="file" name ="user_image">
             
+          </div>
+          
 
           <div class="form-group">
             <label for="username">Username</label>
@@ -108,43 +127,14 @@ $user->last_name =  $_POST['last_name'];
              
           
                <div class="form-group">
-                <a href="delete_user.php?id=<?php echo $user->id;?>" class="btn btn-danger">Delete</a>
+                <a id= "user-id" href="delete_user.php?id=<?php echo $user->id;?>" class="btn btn-danger">Delete</a>
             <input class="btn btn-primary" type="submit" name ="update" class="form-control" value="Update">
             
           </div>
 
         </div>
-  
-          
-          
-          <div class="col-md-4" >
-                            <div  class="photo-info-box">
-                                <div class="info-box-header">
-                                   <h4>Photo<span id="toggle" class="glyphicon glyphicon-menu-up pull-right"></span></h4>
-                                </div>
-                            <div class="inside">
-                              <div class="box-inner">
-                                 <p class="text">
-                                   <span class="glyphicon glyphicon-calendar"></span> Uploaded on: April 22, 2030 @ 5:26
-                                  </p>
-                                <input type="file" name ="user_image">
-                                
-                                <hr>
-                                  <p class="text ">
-                                    <span class="data photo_id_box"><img class="admin-thumbnail user-image" src="<?php echo $user->image_path_and_placeholder();?>"></span>
-                                  </p>
-                                 
-                          
-                              
-                              
-                              </div>
-                            </div>          
-                        </div>
-                    </div>
 
-        
-        
-        </form>
+   </form>
         
         
         

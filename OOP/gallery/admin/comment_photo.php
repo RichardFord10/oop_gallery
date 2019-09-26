@@ -35,7 +35,9 @@ $photo = Photo::find_by_id($_GET['id']);
       </h3>
     <!-- Page Heading -->
     <div class="row">
-     
+     <p class="bg-success">
+       <? echo $message; ?>
+      </p>
       <div class="col-lg-12">
         <h1 class="page-header">
          Comments

@@ -1,8 +1,10 @@
   </div>
     <!-- /#wrapper -->
+<!-- Scripts -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+       <script src="js/jquery.js"></script>
+   <script src="js/scripts.js"></script>
+
 
 <!-- Custom scripts -->
 
@@ -14,8 +16,7 @@
 
 <!-- WYSIWYG -->
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-  <script src="js/scripts.js"></script>
-
+ 
  <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);

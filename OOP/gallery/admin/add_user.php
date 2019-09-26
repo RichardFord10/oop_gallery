@@ -1,14 +1,11 @@
 <?php include("includes/header.php"); ?>
 
 <?php  if(!$session->is_signed_in()) {redirect("login.php");} ?>
-<?php $the_message = "";  ?>
 <?php
 
  $user = new User();
   
 if(isset($_POST['submit'])) {
- 
- 
   
   
 $user->username = $_POST['username'];
@@ -18,8 +15,7 @@ $user->last_name =  $_POST['last_name'];
     
  $user->set_file($_FILES['user_image']);
  $user->upload_photo();
-  
-  $the_message = "Add User Success!";
+$session->message("Add User Success!");
   }  
     
   
@@ -40,7 +36,7 @@ $user->last_name =  $_POST['last_name'];
 
 <div id="page-wrapper">
 <h3 class="text-center bg-success">
-   <?php echo $the_message;?>
+   <?php echo $message;?>
   </h3>
   <div class="container-fluid">
 
